@@ -1,21 +1,21 @@
 {
     "name": "synthwave-vscode",
-    "displayName": "SynthWave '84",
+    "displayName": "SynthWave '84/Dark",
     "description": "A Synthwave-inspired colour theme to satisfy your neon dreams",
     "version": "0.1.10",
     "author": "Robb Owen",
-    "publisher": "RobbOwen",
+    "publisher": "Stratorrider",
     "icon": "icon.png",
     "repository": {
         "type": "git",
-        "url": "https://github.com/robb0wen/synthwave-vscode"
+        "url": "https://github.com/JManuelHeredia/synthwave-vscode"
     },
     "engines": {
         "vscode": "^1.33.0"
     },
     "keywords": [
-        "retro",
-        "80s"
+        "Dark",
+        "Glow"
     ],
     "categories": [
         "Themes"
@@ -28,7 +28,7 @@
     "contributes": {
         "themes": [
             {
-                "label": "SynthWave '84",
+                "label": "SynthWave '84/Dark",
                 "uiTheme": "vs-dark",
                 "path": "./themes/synthwave-color-theme.json"
             }
@@ -36,11 +36,11 @@
         "commands": [
             {
                 "command": "synthwave84.enableNeon",
-                "title": "Synthwave '84: Enable Neon Dreams"
+                "title": "Synthwave Dark: Enable Neon Dreams"
             },
             {
                 "command": "synthwave84.disableNeon",
-                "title": "Synthwave '84: Disable Neon Dreams"
+                "title": "Synthwave Dark: Disable Neon Dreams"
             }
         ],
         "configuration": {
@@ -54,7 +54,7 @@
                 "synthwave84.disableGlow": {
                     "type": "boolean",
                     "default": false,
-                    "description": "Disable the glow effect, but show Synthwave '84 editor chrome updates"
+                    "description": "Disable the glow effect, but show Synthwave Dark editor chrome updates"
                 }
             }
         }
