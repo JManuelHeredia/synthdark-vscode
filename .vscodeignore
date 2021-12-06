@@ -2,3 +2,4 @@
 .vscode-test/**
 .gitignore
 vsc-extension-quickstart.md
+synthwave-vscode-0.1.10.vsix
