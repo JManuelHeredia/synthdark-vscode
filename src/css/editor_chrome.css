@@ -13,7 +13,7 @@ BG2_COLOR         :
 /* Add the subtle gradient to the editor background */
 .monaco-editor {
   background-color: transparent !important;
-  /* background-image: linear-gradient(to bottom, #890025 75%, #34294f); */
+  /* background-image: linear-gradient(to bottom, #890025 75%, #AF223A); */
   background-image: #111;
   background-size: auto 100vh;
   background-position: top;

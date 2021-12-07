@@ -17,19 +17,19 @@
     
     if (!disableGlow) {
       /* replace neon red */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #fe4450;/g, "color: #FF7878; text-shadow: 0 0 2px #000, 0 0 4px #fc1f2c[NEON_BRIGHTNESS], 0 0 5px #fc1f2c[NEON_BRIGHTNESS], 0 0 25px #fc1f2c[NEON_BRIGHTNESS];");
-      
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #fe4450;/g, "color: #ffa56f; text-shadow: 0 0 2px #fc1f2c[NEON_BRIGHTNESS], 0 0 8px #fc1f2c[NEON_BRIGHTNESS]; font-weight: bold;");
       /* replace neon pink */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #ff7edb;/g, "color: #7531FF; text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3;");
-      
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #ff7edb;/g, "color: #f5cfdd; text-shadow: 0 0 1px #ff073ecc, 0 0 3px #fff3;");
       /* replace yellow */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #fede5d;/g, "color: #f4eee4; text-shadow: 0 0 2px #393a33, 0 0 8px #f39f05[NEON_BRIGHTNESS], 0 0 2px #f39f05[NEON_BRIGHTNESS];");
-      
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #fede5d;/g, "color: #eeeeee; text-shadow: 0 0 2px #eaeaea, 0 0 6px #f39f05[NEON_BRIGHTNESS];");
       /* replace green */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #72f1b8;/g, "color: #72f1b8; text-shadow: 0 0 2px #100c0f, 0 0 10px #257c55[NEON_BRIGHTNESS], 0 0 35px #212724[NEON_BRIGHTNESS];");
-      
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #72f1b8;/g, "color: #ccffdd; text-shadow: 0 0 2px #100c0f, 0 0 6px #257c55[NEON_BRIGHTNESS], 0 0 10px #218824[NEON_BRIGHTNESS];");
       /* replace blue */
       updatedThemeStyles = updatedThemeStyles.replace(/color: #36f9f6;/g, "color: #fdfdfd; text-shadow: 0 0 2px #001716, 0 0 3px #03edf9[NEON_BRIGHTNESS], 0 0 5px #03edf9[NEON_BRIGHTNESS], 0 0 8px #03edf9[NEON_BRIGHTNESS];");
+      /* replace black */
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #010101;/g, "color: #ececec; text-shadow: 0 0 2px #8a8a8a, 0 0 5px #ababab[NEON_BRIGHTNESS];");
+      /* replace purple */
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #020202;/g, "color: #e7cbfe; text-shadow: 0 0 2px #eeeeee, 0 0 8px #b157fb[NEON_BRIGHTNESS];");
     }
 
     /* append the remaining styles */
@@ -40,7 +40,7 @@
     newStyleTag.innerText = updatedThemeStyles.replace(/(\r\n|\n|\r)/gm, '');
     document.body.appendChild(newStyleTag);
     
-    console.log('Synthwave \'84: NEON DREAMS initialised!');
+    console.log('SyntDark initialised!');
     
     // disconnect the observer because we don't need it anymore
     if (obs) {
