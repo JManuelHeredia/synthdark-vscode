@@ -45,7 +45,7 @@
     "sideBar.background": "#0B0B0B",
     "sideBar.foreground": "#ffffff99",
     "sideBar.dropBackground": "#34294f4c",
-    "sideBarSectionHeader.background": "#D6003A",
+    "sideBarSectionHeader.background": "#5A0018",
     "sideBarSectionHeader.foreground": "#ffffffca",
     "menu.background": "#0E0E0E",
     "editorGroup.border": "#495495",
@@ -152,7 +152,7 @@
         "string.quoted.docstring.multi.python punctuation.definition.string.end.python"
       ],
       "settings": {
-        "foreground": "#848bbd",
+        "foreground": "#8a3946",
         "fontStyle": "italic"
       }
     },
@@ -164,14 +164,14 @@
         "punctuation.definition.string"
       ],
       "settings": {
-        "foreground": "#ff8b39"
+        "foreground": "#ffc116"
       }
     },
     {
       "name": "Punctuation within templates",
       "scope": "string.template meta.embedded.line",
       "settings": {
-        "foreground": "#b6b1b1"
+        "foreground": "#dbdbdb"
       }
     },
     {
