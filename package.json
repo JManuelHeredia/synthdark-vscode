@@ -1,65 +1,68 @@
 {
-    "name": "synthwave-vscode",
-    "displayName": "SynthWave Dark",
-    "description": "A Synthwave-inspired colour theme to satisfy your neon dreams",
-    "version": "0.1.0",
-    "author": "Robb Owen",
-    "publisher": "Stratorrider",
-    "icon": "icon.png",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/JManuelHeredia/synthwave-vscode"
-    },
-    "engines": {
-        "vscode": "^1.33.0"
-    },
-    "keywords": [
-        "Glow",
-        "Dark"
-    ],
-    "categories": [
-        "Themes"
-    ],
-    "activationEvents": [
-        "*",
-        "onCommand:synthwave84.enableNeon"
-    ],
-    "main": "./src/extension.js",
-    "contributes": {
-        "themes": [
-            {
-                "label": "SynthWave Dark",
-                "uiTheme": "vs-dark",
-                "path": "./themes/synthwave-color-theme.json"
-            }
-        ],
-        "commands": [
-            {
-                "command": "synthwave84.enableNeon",
-                "title": "Synthwave '84: Enable Neon Dreams"
-            },
-            {
-                "command": "synthwave84.disableNeon",
-                "title": "Synthwave '84: Disable Neon Dreams"
-            }
-        ],
-        "configuration": {
-            "title": "Synthwave Dark",
-            "properties": {
-                "synthwave84.brightness": {
-                    "type": "number",
-                    "default": 0.45,
-                    "description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
-                },
-                "synthwave84.disableGlow": {
-                    "type": "boolean",
-                    "default": false,
-                    "description": "Disable the glow effect, but show Synthwave '84 editor chrome updates"
-                }
-            }
-        }
-    },
-    "dependencies": {
-        "semver": "^7.1.1"
-    }
+	"name": "synthwave-vscode",
+	"displayName": "SynthDark",
+	"description": "A Synthwave-inspired colour theme to satisfy your glow dreams",
+	"version": "0.1.0",
+	"author": "Robb Owen",
+	"publisher": "Stratorrider",
+	"icon": "icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JManuelHeredia/synthwave-vscode"
+	},
+	"engines": {
+		"vscode": "^1.33.0"
+	},
+	"keywords": [
+		"Glow",
+		"Dark"
+	],
+	"categories": [
+		"Themes"
+	],
+	"activationEvents": [
+		"*",
+		"onCommand:synthwave84.enableNeon"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"themes": [
+			{
+				"label": "SynthDark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/synthwave-color-theme.json"
+			}
+		],
+		"commands": [
+			{
+				"command": "synthwave84.enableNeon",
+				"title": "SynthDark: Enable Neon Dreams"
+			},
+			{
+				"command": "synthwave84.disableNeon",
+				"title": "SynthDark: Disable Neon Dreams"
+			}
+		],
+		"configuration": {
+			"title": "SynthDark",
+			"properties": {
+				"synthwave84.brightness": {
+					"type": "number",
+					"default": 0.45,
+					"description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
+				},
+				"synthwave84.disableGlow": {
+					"type": "boolean",
+					"default": false,
+					"description": "Disable the glow effect, but show SynthDark editor chrome updates"
+				}
+			}
+		}
+	},
+	"dependencies": {
+		"semver": "^7.1.1"
+	},
+	"__metadata": {
+		"installedTimestamp": 1638844140912
+	}
 }
