@@ -6,7 +6,7 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	this.extensionName = 'RobbOben.synthwave-vscode';
+	this.extensionName = 'Stratorrider.synthwave-vscode';
 	this.cntx = context;
 	
 	const config = vscode.workspace.getConfiguration("synthwave84");
