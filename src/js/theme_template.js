@@ -108,27 +108,32 @@
    * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
    */
   const watchForBootstrap = function(mutationsList, observer) {
-    for(let mutation of mutationsList) {
-      if (mutation.type === 'attributes') {
-        // does the style div exist yet?
-        const tokensEl = document.querySelector('.vscode-tokens-styles');  
-        if (readyForReplacement(tokensEl, tokenReplacements)) {
-          // If everything we need is ready, then initialise
-          initNeonDreams([DISABLE_GLOW], observer);
-        } else {
-          // sometimes VS code takes a while to init the styles content, so if there stop this observer and add an observer for that
-          observer.disconnect();
-          observer.observe(tokensEl, { childList: true });
-        }
+      for(let mutation of mutationsList) {
+          if (mutation.type === 'attributes') {
+            // only init if we're using a Synthwave 84 subtheme
+            const isUsingSynthwave = document.querySelector('[class*="Stratorrider-synthwave-vscode-themes"]');
+            // does the style div exist yet?
+            const tokensLoaded = document.querySelector('.vscode-tokens-styles');
+            // does it have content ?
+            const tokenStyles = document.querySelector('.vscode-tokens-styles').innerText;
+
+            // sometimes VS code takes a while to init the styles content, so stop this observer and add an observer for that
+            if (isUsingSynthwave && tokensLoaded) {
+              observer.disconnect();
+              observer.observe(tokensLoaded, { childList: true });
+            }
+          }
+          if (mutation.type === 'childList') {
+            const isUsingSynthwave = document.querySelector('[class*="Stratorrider-synthwave-vscode-themes"]');
+            const tokensLoaded = document.querySelector('.vscode-tokens-styles');
+            const tokenStyles = document.querySelector('.vscode-tokens-styles').innerText;
+
+            // Everything we need is ready, so initialise
+            if (isUsingSynthwave && tokensLoaded && tokenStyles) {
+                initNeonDreams([DISABLE_GLOW], observer);
+            }
+          }
       }
-      if (mutation.type === 'childList') {
-        const tokensEl = document.querySelector('.vscode-tokens-styles');      
-        if (readyForReplacement(tokensEl, tokenReplacements)) {
-          // Everything we need should be ready now, so initialise
-          initNeonDreams([DISABLE_GLOW], observer);
-        }
-      }
-    }
   };
 
   //=============================
