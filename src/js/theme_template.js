@@ -86,7 +86,7 @@
     
     if (!disableGlow) {
       /* replace neon red */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #fe4450;/g, "color: #ffa56f; text-shadow: 0 0 2px #fc1f2c[NEON_BRIGHTNESS], 0 0 8px #fc1f2c[NEON_BRIGHTNESS]; font-weight: bold;");
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #fe4450;/g, "color: #FF6666; text-shadow: 0 0 4px #fc1f2c[NEON_BRIGHTNESS], 0 0 14px #fc1f2c[NEON_BRIGHTNESS]; font-weight: 600;");
       /* replace neon pink */
       updatedThemeStyles = updatedThemeStyles.replace(/color: #ff7edb;/g, "color: #f5cfdd; text-shadow: 0 0 1px #ff073ecc, 0 0 3px #fff3;");
       /* replace yellow */
@@ -94,11 +94,13 @@
       /* replace green */
       updatedThemeStyles = updatedThemeStyles.replace(/color: #72f1b8;/g, "color: #ccffdd; text-shadow: 0 0 2px #100c0f, 0 0 6px #257c55[NEON_BRIGHTNESS], 0 0 10px #218824[NEON_BRIGHTNESS];");
       /* replace blue */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #36f9f6;/g, "color: #fdfdfd; text-shadow: 0 0 2px #001716, 0 0 3px #03edf9[NEON_BRIGHTNESS], 0 0 5px #03edf9[NEON_BRIGHTNESS], 0 0 8px #03edf9[NEON_BRIGHTNESS];");
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #36f9f6;/g, "color: #acffff; text-shadow: 0 0 6px #0399f9[NEON_BRIGHTNESS], 0 0 12px #66ffff[NEON_BRIGHTNESS]; font-weight: 600;");
       /* replace black */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #010101;/g, "color: #ececec; text-shadow: 0 0 2px #8a8a8a, 0 0 5px #ababab[NEON_BRIGHTNESS];");
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #010101;/g, "color: #99ffdd; text-shadow: 0 0 2px #ffffff[NEON_BRIGHTNESS];");
       /* replace purple */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #020202;/g, "color: #e7cbfe; text-shadow: 0 0 2px #eeeeee, 0 0 8px #b157fb[NEON_BRIGHTNESS];");
+      updatedThemeStyles = updatedThemeStyles.replace(/color: #020202;/g, "color: #dedede; text-shadow: 0 0 2px #f3ff05[NEON_BRIGHTNESS], 0 0 8px #ffdd05[NEON_BRIGHTNESS]; font-weight: bold;");
+      /* replace plus 100 weight */
+      updatedThemeStyles = updatedThemeStyles.replace(/color: ##e6e6e6;/g, "color: ##e6e6e6; font-weight: 500;");
     }
 
     /* append the remaining styles */
