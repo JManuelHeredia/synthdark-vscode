@@ -48,7 +48,7 @@
 			"properties": {
 				"synthwave84.brightness": {
 					"type": "number",
-					"default": 0.4,
+					"default": 0.15,
 					"description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
 				},
 				"synthwave84.disableGlow": {
