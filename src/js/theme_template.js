@@ -117,6 +117,7 @@
     if (obs) {
       obs.disconnect();
       obs = null;
+      obs = null;
     }
   };
 
@@ -129,20 +130,28 @@
             // only init if we're using a Synthwave 84 subtheme
             const isUsingSynthwave = document.querySelector('[class*="Stratorrider-synthwave-vscode-themes"]');
             // does the style div exist yet?
-            const tokensLoaded = document.querySelector('.vscode-tokens-styles');
+            const tokensLoaded = document.querySelector('.vscode-tokens-styles')
             // does it have content ?
-            const tokenStyles = document.querySelector('.vscode-tokens-styles').innerText;
+            const tokenStyles = document.querySelector('.vscode-tokens-styles').innerText
+                            && document.querySelector('.vscode-tokens-styles').innerText !== '';
 
             // sometimes VS code takes a while to init the styles content, so stop this observer and add an observer for that
             if (isUsingSynthwave && tokensLoaded) {
-              observer.disconnect();
-              observer.observe(tokensLoaded, { childList: true });
+              if (!tokenStyles) {
+                // sometimes VS code takes a while to init the styles content, so if there stop this observer and add an observer for that
+                observer.disconnect();
+                observer.observe(tokensLoaded, { childList: true });
+              } else {
+                // If everything we need is ready, then initialise
+                initNeonDreams([DISABLE_GLOW], observer);
+              }
             }
           }
           if (mutation.type === 'childList') {
             const isUsingSynthwave = document.querySelector('[class*="Stratorrider-synthwave-vscode-themes"]');
             const tokensLoaded = document.querySelector('.vscode-tokens-styles');
-            const tokenStyles = document.querySelector('.vscode-tokens-styles').innerText;
+            const tokenStyles  = document.querySelector('.vscode-tokens-styles').innerText
+                              && document.querySelector('.vscode-tokens-styles').innerText !== '';
 
             // Everything we need is ready, so initialise
             if (isUsingSynthwave && tokensLoaded && tokenStyles) {
@@ -161,4 +170,5 @@
   // Use a mutation observer to check when we can bootstrap the theme
   const observer = new MutationObserver(watchForBootstrap);
   observer.observe(bodyNode, { attributes: true });
+
 })();
