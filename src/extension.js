@@ -67,7 +67,7 @@ function activate(context) {
 				fs.writeFileSync(htmlFile, output, "utf-8");
 				
 				vscode.window
-					.showInformationMessage("Neon Dreams enabled. VS code must reload for this change to take effect. Code may display a warning that it is corrupted, this is normal. You can dismiss this message by choosing 'Don't show this again' on the notification.", { title: "Restart editor to complete" })
+					.showInformationMessage("SynthDark enabled. VS code must reload for this change to take effect. Code may display a warning that it is corrupted, this is normal. You can dismiss this message by choosing 'Don't show this again' on the notification.", { title: "Restart editor to complete" })
 					.then(function(msg) {
 						vscode.commands.executeCommand("workbench.action.reloadWindow");
 					});
