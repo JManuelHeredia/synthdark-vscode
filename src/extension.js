@@ -30,14 +30,14 @@ function activate(context) {
 		const htmlFile =
 			base +
 			(isWin
-				? "\\electron-browser\\workbench\\workbench.html"
-				: "/electron-browser/workbench/workbench.html");
+				? "\\electron-sandbox\\workbench\\workbench.html"
+				: "/electron-sandbox/workbench/workbench.html");
 
 		const templateFile =
 				base +
 				(isWin
-					? "\\electron-browser\\workbench\\neondreams.js"
-					: "/electron-browser/workbench/neondreams.js");
+					? "\\electron-sandbox\\workbench\\neondreams.js"
+					: "/electron-sandbox/workbench/neondreams.js");
 
 		try {
 
@@ -81,7 +81,8 @@ function activate(context) {
 			}
 		} catch (e) {
 			if (/ENOENT|EACCES|EPERM/.test(e.code)) {
-				vscode.window.showInformationMessage("You must run VS code with admin privileges in order to enable Neon Dreams.");
+				console.log(e);
+				vscode.window.showInformationMessage(`You must run VS code with admin privileges in order to enable Neon Dreams. ${e}`);
 				return;
 			} else {
 				vscode.window.showErrorMessage('Something went wrong when starting neon dreams');
@@ -109,8 +110,8 @@ function uninstall() {
 	var htmlFile =
 		base +
 		(isWin
-			? "\\electron-browser\\workbench\\workbench.html"
-			: "/electron-browser/workbench/workbench.html");
+			? "\\electron-sandbox\\workbench\\workbench.html"
+			: "/electron-sandbox/workbench/workbench.html");
 
 	// modify workbench html
 	const html = fs.readFileSync(htmlFile, "utf-8");
