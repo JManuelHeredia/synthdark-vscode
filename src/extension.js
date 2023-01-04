@@ -7,10 +7,10 @@ const diff = require('semver/functions/diff');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	this.extensionName = 'Stratorrider.synthwave-vscode';
+	this.extensionName = 'synthdark-vscode';
 	this.cntx = context;
 	
-	const config = vscode.workspace.getConfiguration("synthwave84");
+	const config = vscode.workspace.getConfiguration("synthdark");
 
 	let disableGlow = config && config.disableGlow ? !!config.disableGlow : false;
 	
@@ -21,11 +21,12 @@ function activate(context) {
 	const parsedBrightness = Math.floor(brightness * 255).toString(16).toUpperCase();
 	let neonBrightness = parsedBrightness;
 
-	let disposable = vscode.commands.registerCommand('synthwave84.enableNeon', function () {
+	let disposable = vscode.commands.registerCommand('synthdark.enableNeon', function () {
 
 		const isWin = /^win/.test(process.platform);
 		const appDir = path.dirname(require.main.filename);
 		const base = appDir + (isWin ? "\\vs\\code" : "/vs/code");
+		const electronBase = isVSCodeBelowVersion("1.70.0") ? "electron-browser" : "electron-sandbox";
 
 		const htmlFile =
 			base +
@@ -74,7 +75,7 @@ function activate(context) {
 
 			} else {
 				vscode.window
-					.showInformationMessage('Neon dreams is already enabled. Reload to refresh JS settings.', { title: "Restart editor to refresh settings" })
+					.showInformationMessage('Synthdark is already enabled. Reload to refresh JS settings.', { title: "Restart editor to refresh settings" })
 					.then(function(msg) {
 						vscode.commands.executeCommand("workbench.action.reloadWindow");
 					});
@@ -82,7 +83,7 @@ function activate(context) {
 		} catch (e) {
 			if (/ENOENT|EACCES|EPERM/.test(e.code)) {
 				console.log(e);
-				vscode.window.showInformationMessage(`You must run VS code with admin privileges in order to enable Neon Dreams. ${e}`);
+				vscode.window.showInformationMessage("Synthdark was unable to modify the core VS code files needed to launch the extension. You may need to run VS code with admin privileges in order to enable Synthdark.");
 				return;
 			} else {
 				vscode.window.showErrorMessage('Something went wrong when starting neon dreams');
@@ -91,7 +92,7 @@ function activate(context) {
 		}
 	});
 
-	let disable = vscode.commands.registerCommand('synthwave84.disableNeon', uninstall);
+	let disable = vscode.commands.registerCommand('synthdark.disableNeon', uninstall);
 	
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disable);
@@ -111,7 +112,7 @@ function uninstall() {
 		base +
 		(isWin
 			? "\\electron-sandbox\\workbench\\workbench.html"
-			: "/electron-sandbox/workbench/workbench.html");
+				: "/electron-sandbox/workbench/workbench.html");
 
 	// modify workbench html
 	const html = fs.readFileSync(htmlFile, "utf-8");
@@ -132,6 +133,22 @@ function uninstall() {
 	} else {
 		vscode.window.showInformationMessage('Neon dreams isn\'t running.');
 	}
+}
+
+// Returns true if the VS Code version running this extension is below the
+// version specified in the "version" parameter. Otherwise returns false.
+function isVSCodeBelowVersion(version) {
+	const vscodeVersion = vscode.version;
+	const vscodeVersionArray = vscodeVersion.split('.');
+	const versionArray = version.split('.');
+
+	for (let i = 0; i < versionArray.length; i++) {
+		if (vscodeVersionArray[i] < versionArray[i]) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 module.exports = {
