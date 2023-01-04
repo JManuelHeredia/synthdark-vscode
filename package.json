@@ -21,8 +21,8 @@
 		"Themes"
 	],
 	"activationEvents": [
-		"*",
-		"onCommand:synthwave84.enableNeon"
+		"onCommand:synthdark.enableNeon",
+		"onCommand:synthdark.disableNeon"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -35,23 +35,23 @@
 		],
 		"commands": [
 			{
-				"command": "synthwave84.enableNeon",
-				"title": "SynthDark: Enable Neon Dreams"
+				"command": "synthdark.enableNeon",
+				"title": "SynthDark: Enable Synthdark"
 			},
 			{
-				"command": "synthwave84.disableNeon",
-				"title": "SynthDark: Disable Neon Dreams"
+				"command": "synthdark.disableNeon",
+				"title": "SynthDark: Disable Synthdark"
 			}
 		],
 		"configuration": {
 			"title": "SynthDark",
 			"properties": {
-				"synthwave84.brightness": {
+				"synthdark.brightness": {
 					"type": "number",
 					"default": 0.15,
 					"description": "Set the brightness value for the glow effect. 0.0 is fully transparent and 1.0 is fully bright"
 				},
-				"synthwave84.disableGlow": {
+				"synthdark.disableGlow": {
 					"type": "boolean",
 					"default": false,
 					"description": "Disable the glow effect, but show SynthDark editor chrome updates"

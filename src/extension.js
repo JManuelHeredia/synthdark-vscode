@@ -6,10 +6,10 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	this.extensionName = 'Stratorrider.synthwave-vscode';
+	this.extensionName = 'synthdark-vscode';
 	this.cntx = context;
 	
-	const config = vscode.workspace.getConfiguration("synthwave84");
+	const config = vscode.workspace.getConfiguration("synthdark");
 
 	let disableGlow = config && config.disableGlow ? !!config.disableGlow : false;
 	
@@ -20,7 +20,7 @@ function activate(context) {
 	const parsedBrightness = Math.floor(brightness * 255).toString(16).toUpperCase();
 	let neonBrightness = parsedBrightness;
 
-	let disposable = vscode.commands.registerCommand('synthwave84.enableNeon', function () {
+	let disposable = vscode.commands.registerCommand('synthdark.enableNeon', function () {
 
 		const appDir = path.dirname(vscode.env.appRoot);
 		const base = path.join(appDir,'app','out','vs','code');
@@ -65,7 +65,7 @@ function activate(context) {
 
 			} else {
 				vscode.window
-					.showInformationMessage('Neon dreams is already enabled. Reload to refresh JS settings.', { title: "Restart editor to refresh settings" })
+					.showInformationMessage('Synthdark is already enabled. Reload to refresh JS settings.', { title: "Restart editor to refresh settings" })
 					.then(function(msg) {
 						vscode.commands.executeCommand("workbench.action.reloadWindow");
 					});
@@ -82,7 +82,7 @@ function activate(context) {
 		}
 	});
 
-	let disable = vscode.commands.registerCommand('synthwave84.disableNeon', uninstall);
+	let disable = vscode.commands.registerCommand('synthdark.disableNeon', uninstall);
 	
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(disable);
@@ -129,7 +129,7 @@ function isVSCodeBelowVersion(version) {
 	const vscodeVersion = vscode.version;
 	const vscodeVersionArray = vscodeVersion.split('.');
 	const versionArray = version.split('.');
-	
+
 	for (let i = 0; i < versionArray.length; i++) {
 		if (vscodeVersionArray[i] < versionArray[i]) {
 			return true;

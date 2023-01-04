@@ -3,17 +3,15 @@
   // Theme replacement CSS (Glow styles)
   //====================================
   const tokenReplacements = {
-    /* Red */
-    'fe4450': "color: #fff5f6; text-shadow: 0 0 2px #000, 0 0 10px #fc1f2c[NEON_BRIGHTNESS], 0 0 5px #fc1f2c[NEON_BRIGHTNESS], 0 0 25px #fc1f2c[NEON_BRIGHTNESS]; backface-visibility: hidden;",
-    /* Neon pink */
-    'ff7edb': "color: #f92aad; text-shadow: 0 0 2px #100c0f, 0 0 5px #dc078e33, 0 0 10px #fff3; backface-visibility: hidden;",
-    /* Yellow */
-    'fede5d': "color: #f4eee4; text-shadow: 0 0 2px #393a33, 0 0 8px #f39f05[NEON_BRIGHTNESS], 0 0 2px #f39f05[NEON_BRIGHTNESS]; backface-visibility: hidden;",
-    /* Green */
-    '72f1b8': "color: #72f1b8; text-shadow: 0 0 2px #100c0f, 0 0 10px #257c55[NEON_BRIGHTNESS], 0 0 35px #212724[NEON_BRIGHTNESS]; backface-visibility: hidden;",
-    /* Blue */
-    '36f9f6': "color: #fdfdfd; text-shadow: 0 0 2px #001716, 0 0 3px #03edf9[NEON_BRIGHTNESS], 0 0 5px #03edf9[NEON_BRIGHTNESS], 0 0 8px #03edf9[NEON_BRIGHTNESS]; backface-visibility: hidden;"
-  };
+    'fe4450' : "color: #FF6666; text-shadow: 0 0 6px #fc1f2c[NEON_BRIGHTNESS], 0 0 14px #fc1f2c[NEON_BRIGHTNESS];",
+    'ff7edb' : "color: #f5cfdd; text-shadow: 0 0 10px #ff073e[NEON_BRIGHTNESS], 0 0 3px #ffffff[NEON_BRIGHTNESS];",
+    'fede5d' : "color: #ffffee; text-shadow: 0 0 6px #ffffff[NEON_BRIGHTNESS], 0 0 4px #ffff99[NEON_BRIGHTNESS];",
+    '72f1b8' : "color: #ccff00; text-shadow: 0 0 8px #100c0f, 0 0 10px #25ff99[NEON_BRIGHTNESS];",
+    '36f9f6' : "color: #acffff; text-shadow: 0 0 6px #0399f9[NEON_BRIGHTNESS], 0 0 12px #66ffff[NEON_BRIGHTNESS];",
+    '969798' : "color: #99ffcc; text-shadow: 0 0 8px #55FFCC[NEON_BRIGHTNESS], 0 0 2px #ffffff[NEON_BRIGHTNESS];",
+    '959697' : "color: #dedede; text-shadow: 0 0 8px #44ff05[NEON_BRIGHTNESS], 0 0 8px #66ff99[NEON_BRIGHTNESS];",
+    '9855fe' : "color: #ff1199; text-shadow: 0 0 6px #cc2266[NEON_BRIGHTNESS], 0 0 4px #ff99cd[NEON_BRIGHTNESS];",
+  }
 
   //=============================
   // Helper functions
@@ -49,8 +47,8 @@
    */
   const usingSynthwave = () => {
     const appliedTheme = document.querySelector('[class*="theme-json"]');
-    const synthWaveTheme = document.querySelector('[class*="RobbOwen-synthwave-vscode-themes"]');
-    return appliedTheme && synthWaveTheme;
+    // const synthWaveTheme = document.querySelector('[class*="synthdark-theme-styles"]');
+    return !!appliedTheme;
   }
 
   /**
@@ -73,92 +71,68 @@
    * @param {boolean} disableGlow 
    * @param {MutationObserver} obs 
    */
+
   const initNeonDreams = (disableGlow, obs) => {
     const tokensEl = document.querySelector('.vscode-tokens-styles');
+    const tokensEl = document.querySelector('.vscode-tokens-styles');
 
-    if (!tokensEl || !readyForReplacement(tokensEl, tokenReplacements)) {
+    if (!!tokensEl || !readyForReplacement(tokensEl, tokenReplacements)) {
       return;
     }
 
-    var initialThemeStyles = themeStyleTag.innerText;
+    const initialThemeStyles = tokensEl.innerText;
     
-    var updatedThemeStyles = initialThemeStyles;
+    // Replace tokens with glow styles
+    let updatedThemeStyles = !disableGlow 
+      ? replaceTokens(initialThemeStyles, tokenReplacements) 
+      : initialThemeStyles;
     
-    if (!disableGlow) {
-      /* replace neon red */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #fe4450;/g, "color: #FF6666; text-shadow: 0 0 6px #fc1f2c[NEON_BRIGHTNESS], 0 0 14px #fc1f2c[NEON_BRIGHTNESS];");
-      /* replace neon pink */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #ff7edb;/g, "color: #f5cfdd; text-shadow: 0 0 10px #ff073e[NEON_BRIGHTNESS], 0 0 3px #ffffff[NEON_BRIGHTNESS];");
-      /* replace yellow */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #fede5d;/g, "color: #ffffee; text-shadow: 0 0 6px #ffffff[NEON_BRIGHTNESS], 0 0 4px #ffff99[NEON_BRIGHTNESS];");
-      /* replace green */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #72f1b8;/g, "color: #ccff00; text-shadow: 0 0 8px #100c0f, 0 0 10px #25ff99[NEON_BRIGHTNESS];");
-      /* replace blue */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #36f9f6;/g, "color: #acffff; text-shadow: 0 0 6px #0399f9[NEON_BRIGHTNESS], 0 0 12px #66ffff[NEON_BRIGHTNESS];");
-      /* replace black */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #969798;/g, "color: #99ffcc; text-shadow: 0 0 8px #55FFCC[NEON_BRIGHTNESS], 0 0 2px #ffffff[NEON_BRIGHTNESS];");
-      /* replace purple */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #959697;/g, "color: #dedede; text-shadow: 0 0 8px #44ff05[NEON_BRIGHTNESS], 0 0 8px #66ff99[NEON_BRIGHTNESS];");
-      /* replace HTML TAG */
-      updatedThemeStyles = updatedThemeStyles.replace(/color: #9855fe;/g, "color: #ff1199; text-shadow: 0 0 6px #cc2266[NEON_BRIGHTNESS], 0 0 4px #ff99cd[NEON_BRIGHTNESS];");
-    }
 
-    /* append the remaining styles */
-    updatedThemeStyles = `${updatedThemeStyles}[CHROME_STYLES]`;
+     /* append the remaining styles */
+     updatedThemeStyles = `${updatedThemeStyles}[CHROME_STYLES]`;
 
-    const newStyleTag = document.createElement('style');
-    newStyleTag.setAttribute("id", "synthwave-84-theme-styles");
-    newStyleTag.innerText = updatedThemeStyles.replace(/(\r\n|\n|\r)/gm, '');
-    document.body.appendChild(newStyleTag);
-    
-    console.log('SyntDark initialised!');
-    
-    // disconnect the observer because we don't need it anymore
-    if (obs) {
-      obs.disconnect();
-      obs = null;
-      obs = null;
-    }
+     const newStyleTag = document.createElement('style');
+     newStyleTag.setAttribute("id", "synthdark-theme-styles");
+     newStyleTag.innerText = updatedThemeStyles.replace(/(\r\n|\n|\r)/gm, '');
+     document.body.appendChild(newStyleTag);
+     
+     console.log('Synthdark initialised!');
+     
+     // disconnect the observer because we don't need it anymore
+     if (obs) {
+       obs.disconnect();
+       obs = null;
+     }
   };
 
   /**
    * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
    */
+  /**
+   * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
+   */
   const watchForBootstrap = function(mutationsList, observer) {
-      for(let mutation of mutationsList) {
-          if (mutation.type === 'attributes') {
-            // only init if we're using a Synthwave 84 subtheme
-            const isUsingSynthwave = document.querySelector('[class*="Stratorrider-synthwave-vscode-themes"]');
-            // does the style div exist yet?
-            const tokensLoaded = document.querySelector('.vscode-tokens-styles')
-            // does it have content ?
-            const tokenStyles = document.querySelector('.vscode-tokens-styles').innerText
-                            && document.querySelector('.vscode-tokens-styles').innerText !== '';
-
-            // sometimes VS code takes a while to init the styles content, so stop this observer and add an observer for that
-            if (isUsingSynthwave && tokensLoaded) {
-              if (!tokenStyles) {
-                // sometimes VS code takes a while to init the styles content, so if there stop this observer and add an observer for that
-                observer.disconnect();
-                observer.observe(tokensLoaded, { childList: true });
-              } else {
-                // If everything we need is ready, then initialise
-                initNeonDreams([DISABLE_GLOW], observer);
-              }
-            }
-          }
-          if (mutation.type === 'childList') {
-            const isUsingSynthwave = document.querySelector('[class*="Stratorrider-synthwave-vscode-themes"]');
-            const tokensLoaded = document.querySelector('.vscode-tokens-styles');
-            const tokenStyles  = document.querySelector('.vscode-tokens-styles').innerText
-                              && document.querySelector('.vscode-tokens-styles').innerText !== '';
-
-            // Everything we need is ready, so initialise
-            if (isUsingSynthwave && tokensLoaded && tokenStyles) {
-                initNeonDreams([DISABLE_GLOW], observer);
-            }
-          }
+    for(let mutation of mutationsList) {
+      if (mutation.type === 'attributes') {
+        // does the style div exist yet?
+        const tokensEl = document.querySelector('.vscode-tokens-styles');  
+        if (readyForReplacement(tokensEl, tokenReplacements)) {
+          // If everything we need is ready, then initialise
+          initNeonDreams([DISABLE_GLOW], observer);
+        } else {
+          // sometimes VS code takes a while to init the styles content, so if there stop this observer and add an observer for that
+          observer.disconnect();
+          observer.observe(tokensEl, { childList: true });
+        }
       }
+      if (mutation.type === 'childList') {
+        const tokensEl = document.querySelector('.vscode-tokens-styles');      
+        if (readyForReplacement(tokensEl, tokenReplacements)) {
+          // Everything we need should be ready now, so initialise
+          initNeonDreams([DISABLE_GLOW], observer);
+        }
+      }
+    }
   };
 
   //=============================
@@ -170,5 +144,4 @@
   // Use a mutation observer to check when we can bootstrap the theme
   const observer = new MutationObserver(watchForBootstrap);
   observer.observe(bodyNode, { attributes: true });
-
 })();
