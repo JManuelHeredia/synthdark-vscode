@@ -1,5 +1,5 @@
 {
-  "name": "Synthdark",
+  "name": "SynthDark",
   "type": "dark",
   "semanticHighlighting": true,
   "colors": {
@@ -38,6 +38,7 @@
     "list.errorForeground": "#fe4450E6",
     "list.warningForeground": "#d13b00cc",
     "activityBar.background": "#151515",
+    "activityBar.dropBackground": "#34294f66",
     "activityBar.foreground": "#ffffff",
     "activityBarBadge.background": "#f83f6d",
     "activityBarBadge.foreground": "#890025",
