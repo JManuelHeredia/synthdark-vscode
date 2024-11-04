@@ -126,7 +126,7 @@
     "terminal.ansiGreen": "#0bb367",
     "terminal.ansiMagenta": "#ff7edb",
     "terminal.ansiRed": "#fe4450",
-    "terminal.ansiYellow": "#f3e70f",
+    "terminal.ansiYellow": "#f83f6d",
     "terminal.selectionBackground": "#ffffff20",
     "terminalCursor.background": "#7c7c7c",
     "terminalCursor.foreground": "#7c7c7c",

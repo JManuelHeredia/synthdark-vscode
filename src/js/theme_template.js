@@ -123,9 +123,6 @@
   /**
    * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
    */
-  /**
-   * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
-   */
   const watchForBootstrap = function(mutationsList, observer) {
     console.log('Watch bootstrap.');
     for(let mutation of mutationsList) {

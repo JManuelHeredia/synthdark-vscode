@@ -122,7 +122,6 @@ function uninstall() {
 		vscode.window.showInformationMessage('Neon dreams isn\'t running.');
 	}
 }
-
 // Returns true if the VS Code version running this extension is below the
 // version specified in the "version" parameter. Otherwise returns false.
 function isVSCodeBelowVersion(version) {
