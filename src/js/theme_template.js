@@ -2,16 +2,27 @@
   //====================================
   // Theme replacement CSS (Glow styles)
   //====================================
+  console.log('Theming start!');
   const tokenReplacements = {
-    'fe4450' : "color: #FF6666; text-shadow: 0 0 6px #fc1f2c[NEON_BRIGHTNESS], 0 0 14px #fc1f2c[NEON_BRIGHTNESS];",
-    'ff7edb' : "color: #f5cfdd; text-shadow: 0 0 10px #ff073e[NEON_BRIGHTNESS], 0 0 3px #ffffff[NEON_BRIGHTNESS];",
-    'fede5d' : "color: #ffffee; text-shadow: 0 0 6px #ffffff[NEON_BRIGHTNESS], 0 0 4px #ffff99[NEON_BRIGHTNESS];",
-    '72f1b8' : "color: #ccff00; text-shadow: 0 0 8px #100c0f, 0 0 10px #25ff99[NEON_BRIGHTNESS];",
-    '36f9f6' : "color: #acffff; text-shadow: 0 0 6px #0399f9[NEON_BRIGHTNESS], 0 0 12px #66ffff[NEON_BRIGHTNESS];",
-    '969798' : "color: #99ffcc; text-shadow: 0 0 8px #55FFCC[NEON_BRIGHTNESS], 0 0 2px #ffffff[NEON_BRIGHTNESS];",
-    '959697' : "color: #dedede; text-shadow: 0 0 8px #44ff05[NEON_BRIGHTNESS], 0 0 8px #66ff99[NEON_BRIGHTNESS];",
-    '9855fe' : "color: #ff1199; text-shadow: 0 0 6px #cc2266[NEON_BRIGHTNESS], 0 0 4px #ff99cd[NEON_BRIGHTNESS];",
-  }
+        /* Red */
+        'fe4450': "color: #ff6666; text-shadow: 0 0 6px #fc1f2c[NEON_BRIGHTNESS], 0 0 14px #fc1f2c[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+        /* Neon pink */
+        'ff7edb': "color: #f5cfdd; text-shadow: 0 0 10px #ff073e[NEON_BRIGHTNESS], 0 0 3px #ffffff[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+        /* Yellow */
+        'fede5d': "color: #ffffee; text-shadow: 0 0 6px #ffffff[NEON_BRIGHTNESS], 0 0 4px #ffff99[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+        /* Green */
+        '72f1b8': "color: #ccff00; text-shadow: 0 0 8px #100c0f, 0 0 10px #25ff99[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+        /* Blue */
+        '36f9f6': "color: #acffff; text-shadow: 0 0 6px #0399f9[NEON_BRIGHTNESS], 0 0 12px #66ffff[NEON_BRIGHTNESS]; backface-visibility: hidden;"
+    // 'fe4450': "color: #ff6666; text-shadow: 0 0 6px #fc1f2c[NEON_BRIGHTNESS], 0 0 14px #fc1f2c[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // 'ff7edb': "color: #f5cfdd; text-shadow: 0 0 10px #ff073e[NEON_BRIGHTNESS], 0 0 3px #ffffff[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // 'fede5d': "color: #ffffee; text-shadow: 0 0 6px #ffffff[NEON_BRIGHTNESS], 0 0 4px #ffff99[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // '72f1b8': "color: #ccff00; text-shadow: 0 0 8px #100c0f, 0 0 10px #25ff99[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // '36f9f6': "color: #acffff; text-shadow: 0 0 6px #0399f9[NEON_BRIGHTNESS], 0 0 12px #66ffff[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // '969798': "color: #99ffcc; text-shadow: 0 0 8px #55FFCC[NEON_BRIGHTNESS], 0 0 2px #ffffff[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // '959697': "color: #dedede; text-shadow: 0 0 8px #44ff05[NEON_BRIGHTNESS], 0 0 8px #66ff99[NEON_BRIGHTNESS]; backface-visibility: hidden;",
+    // '9855fe': "color: #ff1199; text-shadow: 0 0 6px #cc2266[NEON_BRIGHTNESS], 0 0 4px #ff99cd[NEON_BRIGHTNESS]; backface-visibility: hidden;"
+  };
 
   //=============================
   // Helper functions
@@ -24,6 +35,7 @@
    * @returns {boolean}
    */
   const themeStylesExist = (tokensEl, replacements) => {
+    console.log('Styles exist');
     return tokensEl.innerText !== '' && 
       Object.keys(replacements).every(color => {
         return tokensEl.innerText.toLowerCase().includes(`#${color}`);
@@ -38,6 +50,7 @@
    */
   const replaceTokens = (styles, replacements) => Object.keys(replacements).reduce((acc, color) => {
     const re = new RegExp(`color: #${color};`, 'gi');
+    console.log('Replace tokens...');
     return acc.replace(re, replacements[color]);
   }, styles);
 
@@ -47,8 +60,9 @@
    */
   const usingSynthwave = () => {
     const appliedTheme = document.querySelector('[class*="theme-json"]');
-    // const synthWaveTheme = document.querySelector('[class*="synthdark-theme-styles"]');
-    return !!appliedTheme;
+    const synthdark = document.querySelector('[class*="synthdark-theme-styles"]');
+    console.log('Using synthdark', synthdark, appliedTheme && synthdark);
+    return appliedTheme && synthdark;
   }
 
   /**
@@ -58,12 +72,13 @@
    * @returns 
    */
   const readyForReplacement = (tokensEl, tokenReplacements) => tokensEl 
-    ? (
-      // only init if we're using a Synthwave 84 subtheme
-      usingSynthwave() &&         
-      // does it have content ?
-      themeStylesExist(tokensEl, tokenReplacements)
-    )
+    ? 
+      (
+        // only init if we're using a Synthwave 84 subtheme
+        usingSynthwave() ||         
+        // does it have content ?
+        !!themeStylesExist(tokensEl, tokenReplacements)
+      )
     : false;
 
   /**
@@ -73,7 +88,7 @@
    */
 
   const initNeonDreams = (disableGlow, obs) => {
-    const tokensEl = document.querySelector('.vscode-tokens-styles');
+    console.log('Innit Neon.');
     const tokensEl = document.querySelector('.vscode-tokens-styles');
 
     if (!!tokensEl || !readyForReplacement(tokensEl, tokenReplacements)) {
@@ -112,6 +127,7 @@
    * @summary A MutationObserver callback that attempts to bootstrap the theme and assigns a retry attempt if it fails
    */
   const watchForBootstrap = function(mutationsList, observer) {
+    console.log('Watch bootstrap.');
     for(let mutation of mutationsList) {
       if (mutation.type === 'attributes') {
         // does the style div exist yet?

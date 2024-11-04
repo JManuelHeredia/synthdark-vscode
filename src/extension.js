@@ -6,7 +6,7 @@ const vscode = require('vscode');
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	this.extensionName = 'synthdark-vscode';
+	this.extensionName = 'Stratorrider.synthdark-vscode';
 	this.cntx = context;
 	
 	const config = vscode.workspace.getConfiguration("synthdark");
@@ -15,7 +15,7 @@ function activate(context) {
 	
 	let brightness = parseFloat(config.brightness) > 1 ? 1 : parseFloat(config.brightness);
 	brightness = brightness < 0 ? 0 : brightness;
-	brightness = isNaN(brightness) ? 0.4 : brightness;
+	brightness = isNaN(brightness) ? 0.15 : brightness;
 
 	const parsedBrightness = Math.floor(brightness * 255).toString(16).toUpperCase();
 	let neonBrightness = parsedBrightness;

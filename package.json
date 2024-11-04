@@ -1,9 +1,9 @@
 {
-	"name": "synthwave-vscode",
+	"name": "synthdark-vscode",
 	"displayName": "SynthDark",
 	"description": "A Synthwave-inspired colour theme to satisfy your glow dreams",
-	"version": "0.2.1",
-	"author": "Robb Owen",
+	"version": "0.1.15",
+	"author": "Stratorrider",
 	"publisher": "Stratorrider",
 	"icon": "icon.png",
 	"repository": {
@@ -19,10 +19,6 @@
 	],
 	"categories": [
 		"Themes"
-	],
-	"activationEvents": [
-		"onCommand:synthdark.enableNeon",
-		"onCommand:synthdark.disableNeon"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -61,8 +57,5 @@
 	},
 	"dependencies": {
 		"semver": "^7.1.1"
-	},
-	"__metadata": {
-		"installedTimestamp": 1638844140912
 	}
 }
